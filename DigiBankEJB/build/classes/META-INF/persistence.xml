@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="DigiBankEJB">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:/DigiBank</jta-data-source>
+		<class>com.entidades.Segmento</class>
+		<class>com.entidades.Producto</class>
+		<class>com.entidades.PAutomotor</class>
+		<class>com.entidades.Prestamo</class>
+		<class>com.entidades.PInmobiliario</class>
+		<class>com.entidades.CVista</class>
+		
+		<properties>
+			<property name="hibernate.dialect"	value="org.hibernate.dialect.MySQL8Dialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.enable_lazy_load_no_trans" value="true"/>
+		</properties>
+		
+	</persistence-unit>
+</persistence>
