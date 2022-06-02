@@ -82,10 +82,11 @@
 			            <p:column headerText="Tipo de Cuenta" sortBy="#{product.tipoCuenta}">
 			                <h:outputText value="#{product.tipoCuenta}"/>
 			            </p:column>
-			            <p:column headerText="Límite máximo" sortBy="#{product.limMax}">
-			                <h:outputText value="#{product.limMax}" style="font-weight: 700">
-			                    <f:convertNumber currencySymbol="#{product.moneda}" type="currency"/>
-			                </h:outputText>
+			            <p:column headerText="Límite máximo" sortBy="#{product.montoMaximo}">
+			            	<h:outputText value="#{product.montoMaximo}" style="font-weight: 700">
+			            		<f:convertNumber type="currency"/>
+			            	</h:outputText>
+			            	<h:outputText value="#{product.moneda.toString()}" style="font-weight: 700"></h:outputText>
 			            </p:column>
 			            <p:column headerText="Segmentos" sortBy="#{product.segmentos}" filterBy="#{product.segmentos}" filterMatchMode="contains">
 			                <h:outputText value="#{product.segmentos}"/>
@@ -113,10 +114,11 @@
 			            <p:column headerText="Tipo de Cuenta" sortBy="#{product.tipoCuenta}">
 			                <h:outputText value="#{product.clase}"/>
 			            </p:column>
-			            <p:column headerText="Límite máximo" sortBy="#{product.limMax}">
-			                <h:outputText value="#{product.montoMaximo}" style="font-weight: 700">
-			                    <f:convertNumber currencySymbol="#{product.moneda}" type="currency"/>
-			                </h:outputText>
+			            <p:column>
+			            	<h:outputText value="#{product.montoMaximo}" style="font-weight: 700">
+			            		<f:convertNumber type="currency"/>
+			            	</h:outputText>
+			            	<h:outputText value="#{product.moneda.toString()}" style="font-weight: 700"></h:outputText>
 			            </p:column>
 			            <p:column headerText="Segmentos" sortBy="#{product.segmentos}" filterBy="#{product.segmentos}" filterMatchMode="contains">
 			                <h:outputText value="#{product.segmentos}"/>
@@ -151,6 +153,11 @@
 			            </p:column>
 			          	<p:column headerText="Cantidad Cuotas" sortBy="#{product.cantidadCuotas}">
 			                <h:outputText value="#{product.cantidadCuotas}"/>
+			            </p:column>
+			            <p:column headerText="Monto Máximo">
+			            	<h:outputText value="#{product.montoMaximo}" style="font-weight: 700">
+			            		<f:convertNumber currencySymbol="$" type="currency"/>
+			            	</h:outputText>
 			            </p:column>
 			            <p:column headerText="Tipo Vehículo" sortBy="#{product.tipoVe}" filterBy="#{product.tipoVe}">
 			                <h:outputText value="#{product.tipoVe}"/>

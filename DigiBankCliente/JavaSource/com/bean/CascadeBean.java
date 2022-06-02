@@ -3,6 +3,7 @@ package com.bean;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
@@ -63,7 +64,39 @@ public class CascadeBean implements Serializable{
 	private Boolean cVisible;
 	private Boolean ccVisible;
 	private Boolean visible = true;
+	private List<Integer> limMaxV;
 	
+	
+//	public List<Integer> getLimMaxV(){
+//		this.cVistas = cuentaVistaDAO.obtenerTodos();
+//		for(CVista c : cVistas) {
+//			
+//			limMaxV.add(c.getLimMax());
+//		}
+//		return limMaxV;
+//	}
+	public List<Integer> getLimMaxV(){
+	return limMaxV;
+	}
+	
+//	public List<Integer> limMaxPA() {
+//		for(PAutomotor c : pAutomotores) {
+//			resultado.add(c.getCantidadCuotas()*c.getValorCuota());
+//		}
+//		return resultado;
+//	}
+//	
+//	public List<Integer> limMaxPI() {
+//		for(PInmobiliario c : pInmobiliarios) {
+//			resultado.add(c.getCantidadCuotas()*c.getValorCuota());
+//		}
+//		return resultado;
+//	}
+
+	public void setLimMaxV(List<Integer> limMaxV) {
+		this.limMaxV = limMaxV;
+	}
+
 	@PostConstruct
 	public void init() {
 		productosSelect = new ArrayList<>();
@@ -90,6 +123,7 @@ public class CascadeBean implements Serializable{
 	    productosSelect.add(option0);
 	    productosSelect.add(group1);
 	    productosSelect.add(group2);
+	    
 	    }
 		
 		public void onItemSelect(SelectEvent event) {
@@ -101,6 +135,9 @@ public class CascadeBean implements Serializable{
 				iVisible = false;
 				ccVisible = false;
 				pAutomotores = pAutomotorDAO.obtenerTodos();
+			    for(PAutomotor pA : pAutomotores) {
+			    	pA.setMontoMaximo(pA.getCantidadCuotas()*pA.getValorCuota());
+			    }
 			}
 			else if(param.equals(" Inmobiliario")) {
 				visible = false;
@@ -109,6 +146,9 @@ public class CascadeBean implements Serializable{
 				iVisible = true;
 				ccVisible = false;
 				pInmobiliarios = pInmobiliarioDAO.obtenerTodos();
+			    for(PInmobiliario pA : pInmobiliarios) {
+			    	pA.setMontoMaximo(pA.getCantidadCuotas()*pA.getValorCuota());
+			    }
 			}
 			else if(param.equals(" Caja de Ahorro")) {
 				cVisible=true;
@@ -157,6 +197,7 @@ public class CascadeBean implements Serializable{
 	        }
 
 	    }
+		
 
 		public SegmentoDAO getSegmentoDAO() {
 			return segmentoDAO;

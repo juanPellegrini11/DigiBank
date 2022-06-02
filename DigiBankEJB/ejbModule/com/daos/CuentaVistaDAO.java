@@ -9,6 +9,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import com.entidades.CVista;
+import com.entidades.Segmento;
+import com.enumerados.Clase;
+import com.enumerados.Moneda;
 
 
 @Stateless
@@ -21,6 +24,21 @@ public class CuentaVistaDAO {
 	public List<CVista> obtenerTodos(){
 		TypedQuery<CVista> query = em.createQuery("SELECT a FROM CVista a", CVista.class);
 		return query.getResultList();
+	}
+	
+	public void nuevaCuenta (String nombreProducto, Clase clase, List<Segmento> segmento, String tipoCuenta, Moneda moneda, int limMax){
+		CVista c =new CVista();
+		c.setNombreProducto(nombreProducto);
+		c.setClase(clase);
+		c.setSegmento(segmento);
+		c.setTipoCuenta(tipoCuenta);
+		c.setMoneda(moneda);
+		c.setLimMax(limMax);
+		c.setMontoMaximo(limMax);
+		try{
+			this.em.persist(c);
+		}catch(Exception e){
+		}
 	}
 	
 	public List<CVista> obtenerporTipo(String tipo){
